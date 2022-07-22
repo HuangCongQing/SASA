@@ -138,7 +138,8 @@ class PointNet2FSMSG(nn.Module):
                     confidence_mlp = None
             else:
                 confidence_mlp = None
-
+            
+            # ====================================================
             self.SA_modules.append(
                 pointnet2_modules.PointnetSAModuleFSMSG(
                     npoint_list=self.model_cfg.SA_CONFIG.NPOINT_LIST[k],

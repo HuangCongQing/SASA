@@ -9,7 +9,7 @@ from ...ops.pointnet2.pointnet2_batch import pointnet2_modules
 from ...utils import box_coder_utils, box_utils, common_utils, loss_utils
 from .point_head_template import PointHeadTemplate
 
-
+# 投票
 class PointHeadVote(PointHeadTemplate):
     """
     A simple vote-based detection head, which is used for 3DSSD.

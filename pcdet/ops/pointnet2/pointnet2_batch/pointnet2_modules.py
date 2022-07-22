@@ -150,7 +150,7 @@ class _PointnetSAModuleFSBase(nn.Module):
         :param xyz: (B, N, 3) tensor of the xyz coordinates of the features
         :param features: (B, C, N) tensor of the descriptors of the features
         :param new_xyz:
-        :param scores: (B, N) tensor of confidence scores of points, required when using s-fps
+        :param scores: (B, N) tensor of confidence scores of points, required when using s-fps====================================================
         :return:
             new_xyz: (B, npoint, 3) tensor of the new features' xyz
             new_features: (B, npoint, \sum_k(mlps[k][-1])) tensor of the new_features descriptors
@@ -171,6 +171,7 @@ class _PointnetSAModuleFSBase(nn.Module):
                                                                                 features_slice.permute(0, 2, 1),
                                                                                 self.weight_gamma)
                     sample_idx = pointnet2_utils.furthest_point_sample_matrix(dist_matrix, self.npoint_list[i])
+                # ============================================s-fps实现？？？？？？？？？？？？？？？？？？？？？？？？、
                 elif self.sample_method_list[i] == 's-fps':
                     assert scores is not None
                     scores_slice = \
@@ -345,7 +346,7 @@ class PointnetSAModuleFSMSG(_PointnetSAModuleFSBase):
         else:
             self.confidence_mlp = None
 
-
+# 
 class PointnetSAModuleFS(PointnetSAModuleFSMSG):
     """Pointnet set abstraction layer with fusion sampling"""
 

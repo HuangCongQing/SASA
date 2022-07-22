@@ -63,6 +63,7 @@ MODEL:
         SA_CONFIG:
             NPOINT_LIST: [[4096], [512, 512], [256, 256]]
             SAMPLE_RANGE_LIST: [[[0, 16384]], [[0, 4096], [0, 4096]], [[0, 512], [512, 1024]]]
+            # SAMPLE_METHOD_LIST: [['d-fps'], ['f-fps', 'd-fps'], ['f-fps', 'd-fps']] f-fps修改为s-fps
             SAMPLE_METHOD_LIST: [['d-fps'], ['s-fps', 'd-fps'], ['s-fps', 'd-fps']]
             RADIUS: [[0.2, 0.4, 0.8], [0.4, 0.8, 1.6], [1.6, 3.2, 4.8]]
             NSAMPLE: [[32, 32, 64], [32, 32, 64], [32, 32, 64]]
@@ -70,7 +71,7 @@ MODEL:
                    [[64, 64, 128], [64, 64, 128], [64, 96, 128]],
                    [[128, 128, 256], [128, 196, 256], [128, 256, 256]]]
             AGGREGATION_MLPS: [[64], [128], [256]]
-            CONFIDENCE_MLPS: [[32], [64], []]
+            CONFIDENCE_MLPS: [[32], [64], []] # 基于3dssd新添加的
             WEIGHT_GAMMA: 1.0
             DILATED_RADIUS_GROUP: True
 
@@ -107,6 +108,7 @@ MODEL:
         LOSS_CONFIG:
             LOSS_CLS: WeightedBinaryCrossEntropyWithCenterness
             LOSS_REG: WeightedSmoothL1Loss
+            # 基于3dssd新添加的loss
             LOSS_SASA_CONFIG: {
                 'set_ignore_flag': True,
                 'extra_width': [1.0, 1.0, 1.0],
